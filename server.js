@@ -1,6 +1,5 @@
-// The below code creates a simple HTTP server with the NodeJS `http` module,
-// and makes it able to handle websockets. However, currently it does not
-// actually have any websocket functionality - that part is your job!
+// Creates a simple HTTP server with the NodeJS `http` module,
+// and makes it able to handle websockets
 
 var http = require('http');
 var io = require('socket.io');
@@ -18,13 +17,11 @@ server.listen(8080, function () {
 
 var socketServer = io(server);
 
-// This is the object that will keep track of all the current questions in the server.
-// It can be considered to be the (in-memory) database of the application.
+// The (in-memory) database of the application
 var questions = {};
 var questionID = 0;
 
-// Your code goes here:
-//define connection event handler
+// Define connection event handler
 socketServer.on('connection', function (socket) {
   
   socket.emit('here_are_the_current_questions', questions);
